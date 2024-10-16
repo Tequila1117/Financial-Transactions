@@ -25,6 +25,9 @@ public class Transaction {
     private double transactionAmount;
 
     // Constructor - special method that initializes a new Transaction object
+    public Transaction(){
+
+    }
     // Parameters are placed inside parentheses and used to initialize the object
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         // 'this' keyword refers to the current instance of the class
