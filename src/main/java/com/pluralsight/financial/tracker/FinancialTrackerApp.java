@@ -85,6 +85,45 @@ public class FinancialTrackerApp {
         System.out.println("Deposit added successfully!");
     }
 
+    // Method to make a payment
+    private void makePayment() {
+        System.out.println("Enter payment details:");
+        System.out.print("Date (YYYY-MM-DD): ");
+        LocalDate date = LocalDate.parse(userInputScanner.nextLine(), DATE_FORMATTER);
+        System.out.print("Time (HH:MM:SS): ");
+        LocalTime time = LocalTime.parse(userInputScanner.nextLine(), TIME_FORMATTER);
+        System.out.print("Description: ");
+        String description = userInputScanner.nextLine();
+        System.out.print("Vendor: ");
+        String vendor = userInputScanner.nextLine();
+        System.out.print("Amount: ");
+        double amount = Double.parseDouble(userInputScanner.nextLine());
+
+        // Create a new Transaction for the payment (assuming payments are negative)
+        Transaction newPayment = new Transaction(date, time, description, vendor, -amount);
+        transactionList.add(newPayment); // Add it to the list
+        saveTransactions(); // Save the updated list to the file
+        System.out.println("Payment added successfully!");
+    }
+
+    // Method to view the ledger of transactions
+    private void viewLedger() {
+        System.out.println("Ledger of Transactions:");
+        if (transactionList.isEmpty()) {
+            System.out.println("No transactions found."); // Notify if no transactions exist
+        } else {
+            for (Transaction transaction : transactionList) {
+                // Display each transaction
+                System.out.printf("%s %s | %s | %s | %.2f%n",
+                        transaction.getTransactionDate(),
+                        transaction.getTransactionTime(),
+                        transaction.getTransactionDescription(),
+                        transaction.getTransactionVendor(),
+                        transaction.getTransactionAmount());
+            }
+        }
+    }
+
     // Method to display the main menu and handle user choices
     public void run() {
         while (true) {
@@ -99,6 +138,12 @@ public class FinancialTrackerApp {
             switch (choice) {
                 case "D":
                     addDeposit(); // Call method to add a deposit
+                    break;
+                case "P":
+                    makePayment(); // Call method to make a payment
+                    break;
+                case "L":
+                    viewLedger(); // Call method to view the ledger
                     break;
                 case "X":
                     System.out.println("Thank you for using the Financial Tracker App. Goodbye!");
