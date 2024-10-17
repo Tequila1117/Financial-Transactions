@@ -12,39 +12,47 @@ public class Ledger {
     public static void viewLedger(ArrayList<Transaction> transactionList) {
         Scanner userInputScanner = new Scanner(System.in);
         System.out.println("\n Ledger Menu");
-        System.out.println("A) View All Transactions");
-        System.out.println("D) View Deposit");
-        System.out.println("P) View Payment");
-        System.out.println("R) Reports");
-        System.out.println("H) Home");
-        System.out.println("X) Exit");
-        System.out.print("Choose an option: ");
+        System.out.println(""" 
+                     A) View All Transactions
+                     D) View Deposit
+                     P) View Payment
+                     R) Reports
+                     H) Home
+                     Choose an option:
+                    
+                     
+                """);
+
 
         boolean ledgerMenuRunning = true;
 
+        // create while loop that keeps running through prompts until user exits
         while (ledgerMenuRunning) {
             String choice = userInputScanner.nextLine().toUpperCase();
 
             // Switch statement to handle different menu choices
             switch (choice) {
                 case "D":
-                    for (Transaction tran: viewDeposits(transactionList)) {
+                    for (Transaction tran : viewDeposits(transactionList)) {
                         System.out.print(tran);
                     }
                     break;
                 case "P":
                     // Call payment method
-                    viewPayments(transactionList);
+                    System.out.println("View Payments");
                     break;
 
                 case "A":
-                    viewAllTransactions(transactionList);
+                    System.out.println(" View All Transactions");
                     break;
                 case "R":
-                    // Call ledger method
+                    Reports r = new Reports();
+                    Reports.reports();
+
+
                     break;
                 case "H":
-                    System.out.println("Thank you for using the Financial Tracker App. Goodbye!");
+                    System.out.println("Return to Home Page");
                     ledgerMenuRunning = false;
                     break;  // Going back to /home Page
                 default:
@@ -59,8 +67,8 @@ public class Ledger {
 
     // helper class for the ledger menu
 
-    //all methods related to the Ledger
-    //static methods make the most sense
+    //call methods related to the Ledger
+
 
     public static void viewAllTransactions(List<Transaction> transactionList) {
 
@@ -82,6 +90,21 @@ public class Ledger {
         }
     }
 
+
+    //view deposits
+    public static ArrayList<Transaction> viewDeposits(ArrayList<Transaction> transactionList) {
+        ArrayList<Transaction> deposits = new ArrayList<>();
+        if (transactionList.isEmpty()) {
+            System.out.println("No Transactions Found.");
+        }
+        for (Transaction tran : transactionList) {
+            if (tran.getTransactionAmount() > 0) {  // Check for positive amount
+                deposits.add(tran);
+            }
+        }
+        return deposits;
+    }
+
     // view Payments (debits)
 
     public static ArrayList<Transaction> viewPayments(ArrayList<Transaction> transactionList) {
@@ -98,21 +121,11 @@ public class Ledger {
         }
         return payments;
     }
-
-    //view deposits
-    public static ArrayList<Transaction> viewDeposits(ArrayList<Transaction> transactionList) {
-        ArrayList<Transaction> deposits = new ArrayList<>();
-        if (transactionList.isEmpty()) {
-            System.out.println("No Transactions Found.");
-        }
-        for (Transaction tran : transactionList) {
-            if (tran.getTransactionAmount() > 0) {  // Check for positive amount
-                deposits.add(tran);
-            }
-        }
-        return deposits;
-    }
 }
+
+
+
+
 
 
 
