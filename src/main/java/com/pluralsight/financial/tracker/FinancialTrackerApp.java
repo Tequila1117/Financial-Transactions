@@ -2,19 +2,19 @@ package com.pluralsight.financial.tracker;
 
 
 import java.io.*;  // For handling input/output operations (reading/writing files)
-import java.time.LocalDate;  // For working with dates
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;  // For working with times
-import java.time.format.DateTimeFormatter;  // For formatting dates and times
-import java.util.ArrayList;  // For creating a list that can grow or shrink
-import java.util.Scanner;  // For reading user input from the keyboard
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 // Main class definition - this is the blueprint for our application
 public class FinancialTrackerApp {
     // Constants - values that don't change throughout the program
     private static final String CSV_FILE_PATH = "src/main/resources/transactions.csv";  // Location of our data file
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");  // Format for dates
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");  // Format for times
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");  // Format for times
 
     // Instance variables - data that belongs to each instance of our application
     private ArrayList<Transaction> transactionList;  // List to store all transactions
@@ -80,14 +80,12 @@ public class FinancialTrackerApp {
         // Get all the necessary information from the user
         System.out.print("Date (YYYY-MM-DD): ");
 
-    //    LocalDateTime todaysDate = LocalDateTime.now();
+
         LocalDate date = LocalDate.parse(userInputScanner.nextLine(), DATE_FORMATTER);
-     //   LocalDate date2 = todaysDate.toLocalDate();
-      //  LocalDate formatedDate = LocalDate.parse(date2.toString(),DATE_FORMATTER);
-       System.out.print("Time (HH:MM:SS): ");
+
+       System.out.print("Time (HH:MM): ");
         LocalTime time = LocalTime.parse(userInputScanner.nextLine(), TIME_FORMATTER);
-      //  LocalTime time2 = todaysDate.toLocalTime();
-       // LocalTime formattedTime = LocalTime.parse(time2.toString(), TIME_FORMATTER);
+
 
         System.out.print("Description: ");
         String description = userInputScanner.nextLine();
@@ -100,16 +98,16 @@ public class FinancialTrackerApp {
         Transaction newDeposit = new Transaction(date, time, description, vendor, amount);
         transactionList.add(0, newDeposit);  // Add to the beginning of the list
         saveTransactions();  // Save changes to the file
-        System.out.println("Deposit added successfully!");  // Confirm to the user
+        System.out.println("Great!! Deposit added successfully!");  // Confirm to the user
     }
 
-    // Method to handle making a payment (similar to addDeposit but amount is negative)
+    // Method to handle making a payment (debit)
     private void makePayment() {
         System.out.println("Enter payment details:");
-        // Get all the necessary information from the user
+        // Get all the needed information from the user
         System.out.print("Date (YYYY-MM-DD): ");
         LocalDate date = LocalDate.parse(userInputScanner.nextLine(), DATE_FORMATTER);
-        System.out.print("Time (HH:MM:SS): ");
+        System.out.print("Time (HH:MM): ");
         LocalTime time = LocalTime.parse(userInputScanner.nextLine(), TIME_FORMATTER);
         System.out.print("Description: ");
         String description = userInputScanner.nextLine();
@@ -125,65 +123,7 @@ public class FinancialTrackerApp {
         System.out.println("Payment added successfully!");  // Confirm to the user
     }
 
-    // Method to show all transactions
-    private void viewLedger() {
-//        System.out.println("Ledger of Transactions:");
-//        // Check if we have any transactions
-//        if (transactionList.isEmpty()) {
-//            System.out.println("No transactions found.");
-//        } else {
-//            // For each loop to go through and display all transactions
-//            for (Transaction transaction : transactionList) {
-//                // Print each transaction with formatted output
-//                System.out.printf("%s %s  | %s  | %s  | %.2f%n",
-//                        transaction.getTransactionDate(),
-//                        transaction.getTransactionTime(),
-//                        transaction.getTransactionDescription(),
-//                        transaction.getTransactionVendor(),
-//                        transaction.getTransactionAmount());
-//            }
-      //  }
-        System.out.println("\n Ledger Menu");
-        System.out.println("A) View All Transactions");
-        System.out.println("D) View Deposit");
-        System.out.println("P) View Payment");
-        System.out.println("L) ");
-        System.out.println("X) Exit");
-        System.out.print("Choose an option: ");
 
-        boolean ledgerMenuRunning = true;
-
-        while(ledgerMenuRunning) {
-            String choice = userInputScanner.nextLine().toUpperCase();
-
-            // Switch statement to handle different menu choices
-            switch (choice) {
-                case "D":
-                    // Call Ledger.viewDeposists  method
-                    break;
-                case "P":
-                    Ledger.viewPayments(transactionList); // Call payment method
-                    break;
-
-                case "A":
-                    Ledger.viewAllTransactions(transactionList);
-                        break;
-                case "":
-                    // Call ledger method
-                    break;
-                case "H":
-                    System.out.println("Thank you for using the Financial Tracker App. Goodbye!");
-                    ledgerMenuRunning = false;
-                    break;  // Going basck to /home Page
-                default:
-                    System.out.println("Sorry, That was an invalid option. Please try again.");  // Handle invalid input
-
-            }
-
-        }
-
-
-    }
 
     // Method that runs the main menu loop
     public void run() {
@@ -208,7 +148,7 @@ public class FinancialTrackerApp {
                     makePayment();  // Call payment method
                     break;
                 case "L":
-                    viewLedger(); // Call ledger method
+                    Ledger.viewLedger(transactionList); // Call ledger method
                     break;
                 case "X":
                     System.out.println("Thank you for using the Financial Tracker App. Goodbye!");

@@ -4,10 +4,10 @@ package com.pluralsight.financial.tracker;
 
 import java.time.LocalDate; // (yyyy-MM-dd)
 
-import java.time.LocalTime; // (HH:mm:ss)
+import java.time.LocalTime; // (HH:mm)
 
 // Public class declaration - 'public' means this class can be accessed from other packages
-// This class represents a financial transaction with various attributes
+// This class represents a financial transaction with various attributes (fields)
 public class Transaction {
     // Instance variables (fields)
     // Private, so the variables can only be accessed within this class
@@ -44,7 +44,7 @@ public class Transaction {
     }
 
     // Getter methods - provide read access to private instance variables
-    // public means these methods can be called from outside the class
+
     // Returns the transaction date
     public LocalDate getTransactionDate() {
         // Return statement sends the value back to the caller
@@ -104,10 +104,15 @@ public class Transaction {
     public String toCSVString() {
 
         // String.format is a method that creates a formatted string
-        // %s is the placeholder for strings (date, time, description, vendor)
-        // %.2f is a placeholder for floating-point numbers with 2 decimal places (amount)
-        // The | character is used as a delimiter between fields
+        // %s is the placeholder for strings (date, time, description, vendor) & %.2f is for floating numbers with numbers 2 decimals places (amount
+
         return String.format("%s|%s|%s|%s|%.2f",
+                transactionDate, transactionTime, transactionDescription, transactionVendor, transactionAmount);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s|%s|%s|%s|%.2f \n",
                 transactionDate, transactionTime, transactionDescription, transactionVendor, transactionAmount);
     }
 }
