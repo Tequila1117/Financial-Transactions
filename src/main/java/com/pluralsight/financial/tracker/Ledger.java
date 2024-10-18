@@ -65,9 +65,7 @@ public class Ledger {
 
     }
 
-    // helper class for the ledger menu
 
-    //call methods related to the Ledger
 
 
     public static void viewAllTransactions(List<Transaction> transactionList) {
@@ -122,14 +120,3 @@ public class Ledger {
         return payments;
     }
 }
-
-
-
-
-
-
-
-
-
-
-

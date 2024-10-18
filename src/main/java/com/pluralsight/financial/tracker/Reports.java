@@ -44,7 +44,7 @@ public class Reports {
                     break;
                 case "5":
                     System.out.println("Vendor Search");
-                    
+
                 case "6":
                     System.out.println("Return To Ledger");
                     boolean response = false;
