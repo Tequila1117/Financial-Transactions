@@ -1,15 +1,14 @@
 package com.pluralsight.financial.tracker;
 
 
-import java.io.*;  // For handling input/output operations (reading/writing files)
+import java.io.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Main class definition - this is the blueprint for our application
+// Main class  - this is the blueprint for the application
 public class FinancialTrackerApp {
     // Constants - values that don't change throughout the program
     private static final String CSV_FILE_PATH = "src/main/resources/transactions.csv";  // Location of our data file
