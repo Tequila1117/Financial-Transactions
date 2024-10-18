@@ -45,7 +45,7 @@ public class Ledger {
 
                 case "A":
                     System.out.println(" View All Transactions");
-
+                    viewAllTransactions(transactionList);
                     break;
                 case "R":
                     Reports r = new Reports();
