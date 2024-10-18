@@ -54,7 +54,7 @@ public class Ledger {
                 case "H":
                     System.out.println("Return to Home Page");
                     ledgerMenuRunning = false;
-                    break;  // Going back to /home Page
+                   break;  // Going back to /home Page
                 default:
                     System.out.println("Sorry, That was an invalid option. Please try again.");  // Handle invalid input
 

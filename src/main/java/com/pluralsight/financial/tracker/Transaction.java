@@ -103,9 +103,6 @@ public class Transaction {
     // Returns a String representation of the transaction with fields separated by pipe characters
     public String toCSVString() {
 
-        // String.format is a method that creates a formatted string
-        // %s is the placeholder for strings (date, time, description, vendor) & %.2f is for floating numbers with numbers 2 decimals places (amount
-
         return String.format("%s|%s|%s|%s|%.2f",
                 transactionDate, transactionTime, transactionDescription, transactionVendor, transactionAmount);
     }

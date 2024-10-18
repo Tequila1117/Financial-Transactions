@@ -10,7 +10,7 @@ import java.util.Scanner;  // Import for reading user input
 // Main class for the financial tracker application
 public class FinancialTrackerApp {
     // Constant that holds the file path for CSV data
-    public static String CSV_FILE_PATH = "src/main/resources/transactions.csv";
+     public static final String CSV_FILE_PATH = "src/main/resources/transactions.csv";
     // Formatter for date input
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     // Formatter for time input
