@@ -1,6 +1,6 @@
 package com.pluralsight.financial.tracker;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,12 +38,14 @@ public class Ledger {
                     }
                     break;
                 case "P":
+                    for (Transaction tran : viewPayments(transactionList))
                     // Call payment method
-                    System.out.println("View Payments");
+                    System.out.print(tran);
                     break;
 
                 case "A":
                     System.out.println(" View All Transactions");
+
                     break;
                 case "R":
                     Reports r = new Reports();

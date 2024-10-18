@@ -1,11 +1,11 @@
 package com.pluralsight.financial.tracker;
 
-import java.io.*;  // Import for input and output operations
-import java.time.LocalDate;  // Import for handling dates
-import java.time.LocalTime;  // Import for handling times
-import java.time.format.DateTimeFormatter;  // Import for date/time formatting
-import java.util.ArrayList;  // Import for using ArrayList
-import java.util.Scanner;  // Import for reading user input
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 // Main class for the financial tracker application
 public class FinancialTrackerApp {
