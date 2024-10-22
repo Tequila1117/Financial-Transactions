@@ -6,12 +6,11 @@ import java.time.LocalDate; // (yyyy-MM-dd)
 
 import java.time.LocalTime; // (HH:mm)
 
-// Public class declaration - 'public' means this class can be accessed from other packages
+
 // This class represents a financial transaction with various attributes (fields)
 public class Transaction {
     // Instance variables (fields)
     // Private, so the variables can only be accessed within this class
-    // LocalDate object to show the date when the transaction occurred
     private LocalDate transactionDate;
     // LocalTime object to show the time that the transaction occurred
     private LocalTime transactionTime;
@@ -20,14 +19,11 @@ public class Transaction {
     private String transactionDescription;
     // String to store the name of the vendor/merchant
     private String transactionVendor;
-    // double is a primitive data type used to store decimal numbers
+    // double is the primitive data type used to store decimal numbers
     // Stores the monetary amount of the transaction
     private double transactionAmount;
 
-    // Constructor - special method that initializes a new Transaction object
-    public Transaction(){
 
-    }
     // Parameters are placed inside parentheses and used to initialize the object
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         // 'this' keyword refers to the current instance of the class

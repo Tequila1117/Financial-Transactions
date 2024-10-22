@@ -88,7 +88,6 @@ How the transaction details will display:
 
 ***Example of Transaction Display:***
 
-
 ![Screenshot of Home Screen](images/transactiondetails.png)
 
 

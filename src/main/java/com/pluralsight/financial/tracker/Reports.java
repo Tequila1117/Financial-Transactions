@@ -29,6 +29,7 @@ public class Reports {
                 case "1":
                     System.out.println("Showing Month to Date");
                     // Call the method for month-to-date transactions
+
                     break;
                 case "2":
                     System.out.println("Showing Previous Month");
@@ -106,14 +107,14 @@ public class Reports {
     }
 
     // Method for Previous Year transactions
-    public static void previousYear(ArrayList<Transaction> transactionList) {
+    public static void previousYear() {
         LocalDate today = LocalDate.now(); // Get today's date
         LocalDate firstDayOfLastYear = today.minusYears(1).withDayOfYear(1); // Get the first day of the previous year
         LocalDate lastDayOfLastYear = today.minusYears(1).withDayOfYear(today.minusYears(1).lengthOfYear()); // Get the last day of the previous year
         System.out.println("Previous Year Transactions:");
 
         // Loop through the transaction list to find transactions from the previous year
-        for (Transaction transaction : transactionList) {
+        for (Transaction transaction : ) {
             // Check if the transaction date is within the previous year
             if (transaction.getTransactionDate().isAfter(firstDayOfLastYear.minusDays(1)) &&
                     transaction.getTransactionDate().isBefore(lastDayOfLastYear.plusDays(1))) {
